@@ -1,6 +1,6 @@
 # nat-instance
 
-Part of [`Jaws-Platform/jaws-network/aws`](https://registry.terraform.io/modules/Jaws-Platform/jaws-network/aws/latest) · [Registry](https://registry.terraform.io/modules/Jaws-Platform/jaws-network/aws/latest/submodules/nat-instance) · [Source](https://github.com/Jaws-Platform/terraform-aws-jaws-network/tree/main/modules/nat-instance)
+Part of [`jaws-platform/jaws-network/aws`](https://registry.terraform.io/modules/jaws-platform/jaws-network/aws/latest) · [Registry](https://registry.terraform.io/modules/jaws-platform/jaws-network/aws/latest/submodules/nat-instance) · [Source](https://github.com/jaws-platform/terraform-aws-jaws-network/tree/main/modules/nat-instance)
 
 Gives private route tables a default route to the internet through one small
 instance. It is a low-cost stand-in for a NAT gateway: a `t4g.nano` with IP
@@ -16,7 +16,7 @@ The module knows nothing about what sits behind it. Typical use is
 - One `aws_instance` in the public `subnet_id` creates its own primary
   interface, with an auto-assigned public IPv4 (`associate_public_ip_address`)
   and `source_dest_check = false`. `public_ip` is that address.
-- `user_data` is a `#cloud-config` that writes [`files/nat-setup.sh`](https://github.com/Jaws-Platform/terraform-aws-jaws-network/blob/main/modules/nat-instance/files/nat-setup.sh)
+- `user_data` is a `#cloud-config` that writes [`files/nat-setup.sh`](https://github.com/jaws-platform/terraform-aws-jaws-network/blob/main/modules/nat-instance/files/nat-setup.sh)
   to `/usr/local/sbin/nat-setup.sh` and runs it with `source_cidrs` as arguments.
   The script enables forwarding, installs `iptables-services`, masquerades each
   CIDR out of the default-route interface and persists the rules.
@@ -79,7 +79,7 @@ data "aws_ami" "nat" {
 }
 
 module "nat" {
-  source  = "Jaws-Platform/jaws-network/aws//modules/nat-instance"
+  source  = "jaws-platform/jaws-network/aws//modules/nat-instance"
   version = "0.1.0" # x-release-please-version
 
   name                    = "acme-analytics-nat"
@@ -90,9 +90,9 @@ module "nat" {
 }
 ```
 
-`module.network` is the [`vpc`](https://registry.terraform.io/modules/Jaws-Platform/jaws-network/aws/latest/submodules/vpc)
+`module.network` is the [`vpc`](https://registry.terraform.io/modules/jaws-platform/jaws-network/aws/latest/submodules/vpc)
 module with `private_subnet_cidrs` set. The
-[root module](https://registry.terraform.io/modules/Jaws-Platform/jaws-network/aws/latest)
+[root module](https://registry.terraform.io/modules/jaws-platform/jaws-network/aws/latest)
 wires the two together in one call.
 
 <!-- BEGIN_TF_DOCS -->

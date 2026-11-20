@@ -22,7 +22,7 @@ address:
 
 ```hcl
 module "network" {
-  source  = "Jaws-Platform/jaws-network/aws"
+  source  = "jaws-platform/jaws-network/aws"
   version = "0.1.0" # x-release-please-version
 
   name                 = "acme-analytics"
