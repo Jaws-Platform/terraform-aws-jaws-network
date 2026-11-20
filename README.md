@@ -60,7 +60,7 @@ a security group without ingress rules keeps it unreachable:
 ```hcl
 module "network" {
   source  = "Jaws-Platform/jaws-network/aws"
-  version = "0.1.1" # x-release-please-version
+  version = "0.1.2" # x-release-please-version
 
   name = "acme-chess-bot"
 }
@@ -84,7 +84,7 @@ data "aws_ami" "nat" {
 
 module "network" {
   source  = "Jaws-Platform/jaws-network/aws"
-  version = "0.1.1" # x-release-please-version
+  version = "0.1.2" # x-release-please-version
 
   name                 = "acme-analytics"
   cidr_block           = "10.0.0.0/16"
@@ -102,7 +102,7 @@ a VPC you already have:
 ```hcl
 module "nat" {
   source  = "Jaws-Platform/jaws-network/aws//modules/nat-instance"
-  version = "0.1.1" # x-release-please-version
+  version = "0.1.2" # x-release-please-version
 
   name                    = "acme-analytics-nat"
   subnet_id               = "subnet-0123456789abcdef0" # a public subnet
