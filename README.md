@@ -1,9 +1,9 @@
 # terraform-aws-jaws-network
 
-[![Terraform Registry](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.terraform.io%2Fv1%2Fmodules%2Fjwallace145%2Fjaws-network%2Faws&query=%24.version&prefix=v&label=registry&logo=terraform&color=7B42BC)](https://registry.terraform.io/modules/jwallace145/jaws-network/aws/latest)
-[![GitHub release](https://img.shields.io/github/v/release/jwallace145/terraform-aws-jaws-network?label=release)](https://github.com/jwallace145/terraform-aws-jaws-network/releases/latest)
-[![CI](https://github.com/jwallace145/terraform-aws-jaws-network/actions/workflows/ci.yml/badge.svg?event=pull_request)](https://github.com/jwallace145/terraform-aws-jaws-network/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jwallace145/terraform-aws-jaws-network/blob/main/LICENSE)
+[![Terraform Registry](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.terraform.io%2Fv1%2Fmodules%2FJaws-Platform%2Fjaws-network%2Faws&query=%24.version&prefix=v&label=registry&logo=terraform&color=7B42BC)](https://registry.terraform.io/modules/Jaws-Platform/jaws-network/aws/latest)
+[![GitHub release](https://img.shields.io/github/v/release/Jaws-Platform/terraform-aws-jaws-network?label=release)](https://github.com/Jaws-Platform/terraform-aws-jaws-network/releases/latest)
+[![CI](https://github.com/Jaws-Platform/terraform-aws-jaws-network/actions/workflows/ci.yml/badge.svg?event=pull_request)](https://github.com/Jaws-Platform/terraform-aws-jaws-network/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Jaws-Platform/terraform-aws-jaws-network/blob/main/LICENSE)
 
 A small, cheap AWS network for workloads that reach out to the internet and
 are never reached from it: a VPC with public subnets, optional private
@@ -48,9 +48,9 @@ S3 gateway endpoint are each opt-in.
 
 | Module | Creates |
 |---|---|
-| [root](https://registry.terraform.io/modules/jwallace145/jaws-network/aws/latest) | The whole picture above in one call: `vpc`, plus `nat-instance` when `nat` is set. |
-| [`vpc`](https://registry.terraform.io/modules/jwallace145/jaws-network/aws/latest/submodules/vpc) | The VPC, one public `/24` per availability zone, the internet gateway and the public route table; optionally private subnets on one route table and an S3 gateway endpoint. No NAT. |
-| [`nat-instance`](https://registry.terraform.io/modules/jwallace145/jaws-network/aws/latest/submodules/nat-instance) | A default route for private route tables through one small arm64 instance: IP forwarding and `iptables` masquerading, IMDSv2, an encrypted root volume and a security group that admits only the private CIDRs. Works with any VPC. |
+| [root](https://registry.terraform.io/modules/Jaws-Platform/jaws-network/aws/latest) | The whole picture above in one call: `vpc`, plus `nat-instance` when `nat` is set. |
+| [`vpc`](https://registry.terraform.io/modules/Jaws-Platform/jaws-network/aws/latest/submodules/vpc) | The VPC, one public `/24` per availability zone, the internet gateway and the public route table; optionally private subnets on one route table and an S3 gateway endpoint. No NAT. |
+| [`nat-instance`](https://registry.terraform.io/modules/Jaws-Platform/jaws-network/aws/latest/submodules/nat-instance) | A default route for private route tables through one small arm64 instance: IP forwarding and `iptables` masquerading, IMDSv2, an encrypted root volume and a security group that admits only the private CIDRs. Works with any VPC. |
 
 ## Usage
 
@@ -59,7 +59,7 @@ a security group without ingress rules keeps it unreachable:
 
 ```hcl
 module "network" {
-  source  = "jwallace145/jaws-network/aws"
+  source  = "Jaws-Platform/jaws-network/aws"
   version = "0.1.0" # x-release-please-version
 
   name = "acme-chess-bot"
@@ -83,7 +83,7 @@ data "aws_ami" "nat" {
 }
 
 module "network" {
-  source  = "jwallace145/jaws-network/aws"
+  source  = "Jaws-Platform/jaws-network/aws"
   version = "0.1.0" # x-release-please-version
 
   name                 = "acme-analytics"
@@ -101,7 +101,7 @@ a VPC you already have:
 
 ```hcl
 module "nat" {
-  source  = "jwallace145/jaws-network/aws//modules/nat-instance"
+  source  = "Jaws-Platform/jaws-network/aws//modules/nat-instance"
   version = "0.1.0" # x-release-please-version
 
   name                    = "acme-analytics-nat"
@@ -114,9 +114,9 @@ module "nat" {
 
 ## Examples
 
-- [`basic`](https://github.com/jwallace145/terraform-aws-jaws-network/tree/main/examples/basic):
+- [`basic`](https://github.com/Jaws-Platform/terraform-aws-jaws-network/tree/main/examples/basic):
   a VPC with public subnets only.
-- [`private-subnets-nat`](https://github.com/jwallace145/terraform-aws-jaws-network/tree/main/examples/private-subnets-nat):
+- [`private-subnets-nat`](https://github.com/Jaws-Platform/terraform-aws-jaws-network/tree/main/examples/private-subnets-nat):
   private subnets, a NAT instance and an S3 gateway endpoint.
 
 ## Cost
@@ -151,7 +151,7 @@ follow a replacement, and how private subnet CIDRs are validated.
 
 ## Development
 
-See [CONTRIBUTING.md](https://github.com/jwallace145/terraform-aws-jaws-network/blob/main/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/Jaws-Platform/terraform-aws-jaws-network/blob/main/CONTRIBUTING.md)
 for local setup, the commit and pull request rules, CI, and how releases work.
 `scripts/check.sh` runs everything CI runs, with no AWS credentials.
 
@@ -211,4 +211,4 @@ No resources.
 
 ## License
 
-[MIT](https://github.com/jwallace145/terraform-aws-jaws-network/blob/main/LICENSE)
+[MIT](https://github.com/Jaws-Platform/terraform-aws-jaws-network/blob/main/LICENSE)
