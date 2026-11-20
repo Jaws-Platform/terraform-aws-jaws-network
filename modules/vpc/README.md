@@ -1,6 +1,6 @@
 # vpc
 
-Part of [`Jaws-Platform/jaws-network/aws`](https://registry.terraform.io/modules/Jaws-Platform/jaws-network/aws/latest) · [Registry](https://registry.terraform.io/modules/Jaws-Platform/jaws-network/aws/latest/submodules/vpc) · [Source](https://github.com/Jaws-Platform/terraform-aws-jaws-network/tree/main/modules/vpc)
+Part of [`jaws-platform/jaws-network/aws`](https://registry.terraform.io/modules/jaws-platform/jaws-network/aws/latest) · [Registry](https://registry.terraform.io/modules/jaws-platform/jaws-network/aws/latest/submodules/vpc) · [Source](https://github.com/jaws-platform/terraform-aws-jaws-network/tree/main/modules/vpc)
 
 A VPC for workloads that need to reach the internet and must never be
 reached from it: DNS support and hostnames on, one public subnet per
@@ -25,7 +25,7 @@ order) to add private subnets, named `<name>-private-<az>` and with no public
 IP on launch. They share one private route table that has **no default
 route**: the caller adds it, for example `aws_route` with
 `route_table_id = module.network.private_route_table_id` and the network
-interface of a [`nat-instance`](https://registry.terraform.io/modules/Jaws-Platform/jaws-network/aws/latest/submodules/nat-instance). The CIDRs must sit inside `cidr_block` and
+interface of a [`nat-instance`](https://registry.terraform.io/modules/jaws-platform/jaws-network/aws/latest/submodules/nat-instance). The CIDRs must sit inside `cidr_block` and
 overlap neither the public `/24`s (the first ones in `cidr_block`, one per
 zone) nor each other; the upper half of the VPC is a safe place. The module
 does not impose any subnet-size rule: that is for the consumer.
@@ -45,7 +45,7 @@ subnet, no private route table and no endpoint.
 
 ```hcl
 module "network" {
-  source  = "Jaws-Platform/jaws-network/aws//modules/vpc"
+  source  = "jaws-platform/jaws-network/aws//modules/vpc"
   version = "0.1.0" # x-release-please-version
 
   name               = "acme-chess-bot"
