@@ -18,7 +18,7 @@ address:
 
 ```hcl
 module "network" {
-  source  = "jaws-platform/jaws-network/aws"
+  source  = "Jaws-Platform/jaws-network/aws"
   version = "0.1.1" # x-release-please-version
 
   name = "acme-chess-bot"
