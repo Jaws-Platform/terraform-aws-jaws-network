@@ -80,7 +80,7 @@ data "aws_ami" "nat" {
 
 module "nat" {
   source  = "Jaws-Platform/jaws-network/aws//modules/nat-instance"
-  version = "0.1.1" # x-release-please-version
+  version = "0.1.2" # x-release-please-version
 
   name                    = "acme-analytics-nat"
   subnet_id               = module.network.public_subnet_ids[0]

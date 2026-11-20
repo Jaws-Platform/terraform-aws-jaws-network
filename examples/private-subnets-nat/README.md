@@ -23,7 +23,7 @@ address:
 ```hcl
 module "network" {
   source  = "Jaws-Platform/jaws-network/aws"
-  version = "0.1.1" # x-release-please-version
+  version = "0.1.2" # x-release-please-version
 
   name                 = "acme-analytics"
   private_subnet_cidrs = ["10.0.128.0/20", "10.0.144.0/20"]
