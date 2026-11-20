@@ -46,7 +46,7 @@ subnet, no private route table and no endpoint.
 ```hcl
 module "network" {
   source  = "jaws-platform/jaws-network/aws//modules/vpc"
-  version = "0.1.0" # x-release-please-version
+  version = "0.1.1" # x-release-please-version
 
   name               = "acme-chess-bot"
   availability_zones = ["us-east-1a", "us-east-1b"]
