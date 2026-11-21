@@ -1,3 +1,5 @@
+[![Jaws: one platform for every project on AWS](https://raw.githubusercontent.com/Jaws-Platform/jaws-branding/main/assets/banner/jaws-readme-banner.png)](https://github.com/Jaws-Platform)
+
 # terraform-aws-jaws-network
 
 [![Terraform Registry](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.terraform.io%2Fv1%2Fmodules%2FJaws-Platform%2Fjaws-network%2Faws&query=%24.version&prefix=v&label=registry&logo=terraform&color=7B42BC)](https://registry.terraform.io/modules/Jaws-Platform/jaws-network/aws/latest)
@@ -10,7 +12,7 @@ are never reached from it: a VPC with public subnets, optional private
 subnets, and a **NAT instance** that costs about $7 a month where a NAT
 gateway costs about $33 plus data processing.
 
-It is one of the [Jaws](https://github.com/jwallace145/jaws) module families,
+It is one of the [Jaws](https://github.com/Jaws-Platform/jaws) module families,
 and has no dependency on Jaws: everything is a plain input.
 
 ## What it creates
